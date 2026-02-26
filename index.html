@@ -21,14 +21,16 @@
       --radius:18px;
       --shadow:0 18px 55px rgba(0,0,0,.55);
       --max:1120px;
-      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
-      margin:0; font-family:var(--sans); color:var(--text); overflow-x:hidden;
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      overflow-x:hidden;
       background:
         radial-gradient(1100px 750px at 15% 15%, rgba(255,59,48,.18), transparent 58%),
         radial-gradient(900px 650px at 85% 25%, rgba(255,106,0,.14), transparent 56%),
@@ -36,10 +38,11 @@
         linear-gradient(180deg,#050713 0%,#070a12 65%,#04050c 100%);
     }
 
-    /* subtle grid */
     body:before{
       content:"";
-      position:fixed; inset:0; pointer-events:none;
+      position:fixed;
+      inset:0;
+      pointer-events:none;
       opacity:.20;
       background-image:
         linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
@@ -48,77 +51,131 @@
       mask-image: radial-gradient(720px 620px at 50% 22%, black 35%, transparent 72%);
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
-    /* floating glow blobs */
+    /* Floating glow blobs */
     .blob{
-      position:absolute; border-radius:999px; filter: blur(38px);
-      opacity:.22; pointer-events:none;
+      position:absolute;
+      border-radius:999px;
+      filter: blur(38px);
+      opacity:.22;
+      pointer-events:none;
       background: radial-gradient(circle at 30% 30%, rgba(255,59,48,.9), rgba(255,106,0,.55), transparent 65%);
       animation: floaty 10s ease-in-out infinite;
     }
-    .blob.b1{width:260px;height:260px; left:-80px; top:120px}
-    .blob.b2{width:320px;height:320px; right:-120px; top:240px; animation-duration: 12s; opacity:.18}
-    .blob.b3{width:220px;height:220px; left:40%; bottom:120px; animation-duration: 14s; opacity:.14}
+    .blob.b1{ width:260px; height:260px; left:-80px; top:120px; }
+    .blob.b2{ width:320px; height:320px; right:-120px; top:240px; animation-duration: 12s; opacity:.18; }
+    .blob.b3{ width:220px; height:220px; left:40%; bottom:120px; animation-duration: 14s; opacity:.14; }
+
     @keyframes floaty{
-      0%,100%{ transform: translateY(0) translateX(0) }
-      50%{ transform: translateY(-18px) translateX(12px) }
+      0%,100%{ transform: translateY(0) translateX(0); }
+      50%{ transform: translateY(-18px) translateX(12px); }
     }
 
     header{
-      position:sticky; top:0; z-index:50;
+      position:sticky;
+      top:0;
+      z-index:50;
       backdrop-filter: blur(12px);
       background: rgba(5,7,19,.55);
       border-bottom:1px solid var(--line);
     }
+
     .top{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0; gap:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
     }
+
     .brand{
-      display:flex; align-items:center; gap:12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
       min-width:220px;
     }
+
     .logo{
-      width:34px; height:34px; border-radius:10px;
+      width:34px;
+      height:34px;
+      border-radius:10px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
       box-shadow: 0 10px 30px rgba(255,59,48,.22);
       position:relative;
     }
     .logo:after{
-      content:""; position:absolute; inset:8px;
-      border-radius:8px; border:2px solid rgba(255,255,255,.75);
-      transform: rotate(8deg); opacity:.55;
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:8px;
+      border:2px solid rgba(255,255,255,.75);
+      transform: rotate(8deg);
+      opacity:.55;
     }
-    .brand h1{margin:0; font-size:14px; font-weight:900; letter-spacing:.4px; line-height:1.1}
-    .brand small{display:block; margin-top:2px; color:var(--muted); font-weight:600}
 
-    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      font-size:13px; font-weight:800;
-      color:rgba(255,255,255,.78);
-      padding:9px 10px; border-radius:12px;
-      border:1px solid transparent;
-      transition: .18s ease;
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.4px;
+      line-height:1.1;
     }
-    nav a:hover{color:#fff; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.10)}
+
+    .brand small{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    nav{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      font-size:13px;
+      font-weight:800;
+      color:rgba(255,255,255,.78);
+      padding:9px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition:.18s ease;
+    }
+
+    nav a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.10);
+    }
+
     .cta{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:9px 12px; border-radius:12px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 12px;
+      border-radius:12px;
       background: linear-gradient(135deg, rgba(255,59,48,.18), rgba(255,106,0,.12));
       border:1px solid rgba(255,59,48,.35);
       color:#fff;
     }
 
-    .hero{padding:76px 0 22px; position:relative}
+    .hero{ padding:76px 0 22px; position:relative; }
+
     .heroGrid{
-      display:grid; grid-template-columns: 1.1fr .9fr;
-      gap:22px; align-items:stretch;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
     }
+
     @media (max-width: 920px){
-      .heroGrid{grid-template-columns:1fr}
-      nav{display:none}
+      .heroGrid{ grid-template-columns:1fr; }
+      nav{ display:none; }
     }
 
     .card{
@@ -128,47 +185,81 @@
       box-shadow: var(--shadow);
     }
 
-    .heroLeft{padding:28px; position:relative; overflow:hidden}
+    .heroLeft{ padding:28px; position:relative; overflow:hidden; }
+
     .kicker{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:7px 10px;
       border-radius:999px;
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
       color:rgba(255,255,255,.82);
-      font-size:12px; font-weight:800;
+      font-size:12px;
+      font-weight:800;
     }
+
     .dot{
-      width:8px; height:8px; border-radius:99px;
+      width:8px;
+      height:8px;
+      border-radius:99px;
       background:linear-gradient(135deg,var(--brand),var(--brand2));
       box-shadow: 0 0 18px rgba(255,59,48,.45);
     }
+
     .hero h2{
       margin:14px 0 10px;
-      font-size:42px; line-height:1.04; letter-spacing:-.8px;
+      font-size:42px;
+      line-height:1.04;
+      letter-spacing:-.8px;
     }
-    .hero p{margin:0; color:var(--muted); font-size:15.5px; line-height:1.6; max-width:62ch}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.6;
+      max-width:62ch;
+    }
+
+    .chips{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
     .chip{
-      font-size:12px; font-weight:900;
-      padding:8px 10px; border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      padding:8px 10px;
+      border-radius:999px;
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
       color:rgba(255,255,255,.82);
     }
 
-    .heroRight{padding:18px}
-    .statGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .heroRight{ padding:18px; }
+
+    .statGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+
     .stat{
       padding:14px;
       background: rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.10);
       border-radius:16px;
     }
-    .stat b{display:block; font-size:18px}
-    .stat span{display:block; margin-top:3px; font-size:12px; color:var(--muted); font-weight:700}
 
-    .section{padding:18px 0 0}
+    .stat b{ display:block; font-size:18px; }
+    .stat span{ display:block; margin-top:3px; font-size:12px; color:var(--muted); font-weight:700; }
+
+    .section{ padding:18px 0 0; }
+
     .sectionTitle{
       margin:22px 0 10px;
       font-size:13px;
@@ -178,15 +269,22 @@
       font-weight:900;
     }
 
-    .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
-    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
 
-    .feature{padding:16px}
-    .feature h3{margin:0 0 6px; font-size:16px}
-    .feature p{margin:0; color:var(--muted); font-size:14px; line-height:1.6}
+    @media (max-width: 920px){
+      .grid3{ grid-template-columns:1fr; }
+    }
+
+    .feature{ padding:16px; }
+    .feature h3{ margin:0 0 6px; font-size:16px; }
+    .feature p{ margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
 
     /* FAQ */
-    .faq{padding:14px}
+    .faq{ padding:14px; }
     .q{
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.05);
@@ -195,21 +293,47 @@
       cursor:pointer;
       transition:.18s ease;
     }
-    .q:hover{background:rgba(255,255,255,.07)}
-    .qhead{display:flex; justify-content:space-between; gap:10px; align-items:center}
-    .qhead b{font-size:14px}
-    .chev{width:10px;height:10px;border-right:2px solid rgba(255,255,255,.7);border-bottom:2px solid rgba(255,255,255,.7);transform:rotate(45deg);transition:.18s ease}
-    .q.open .chev{transform:rotate(-135deg)}
-    .ans{max-height:0; overflow:hidden; transition:max-height .22s ease; color:var(--muted); font-size:13.5px; line-height:1.6}
-    .q.open .ans{max-height:220px; margin-top:10px}
+    .q:hover{ background:rgba(255,255,255,.07); }
+    .qhead{ display:flex; justify-content:space-between; gap:10px; align-items:center; }
+    .qhead b{ font-size:14px; }
+
+    .chev{
+      width:10px; height:10px;
+      border-right:2px solid rgba(255,255,255,.7);
+      border-bottom:2px solid rgba(255,255,255,.7);
+      transform:rotate(45deg);
+      transition:.18s ease;
+    }
+    .q.open .chev{ transform:rotate(-135deg); }
+
+    .ans{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .22s ease;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.6;
+    }
+    .q.open .ans{ max-height:220px; margin-top:10px; }
 
     /* Form */
-    .formCard{padding:18px}
-    .formHead{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:10px}
-    .formHead h3{margin:0; font-size:18px}
+    .formCard{ padding:18px; }
+
+    .formHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:10px;
+    }
+
+    .formHead h3{ margin:0; font-size:18px; }
+
     .badge{
-      font-size:12px; font-weight:900;
-      padding:7px 10px; border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      padding:7px 10px;
+      border-radius:999px;
       background:rgba(52,199,89,.12);
       border:1px solid rgba(52,199,89,.25);
       color:rgba(225,255,235,.92);
@@ -236,30 +360,44 @@
       transition:.18s ease;
       font-size:14px;
     }
+
     .input:focus{
       border-color: rgba(255,59,48,.45);
       box-shadow: 0 0 0 4px rgba(255,59,48,.12);
     }
 
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
-    @media (max-width: 680px){ .row{grid-template-columns:1fr} }
-
-    .hint{margin:6px 0 0; font-size:12px; color:var(--muted); line-height:1.5}
-
-    .rangeWrap{margin-top:10px}
-    .rangeTop{
-      display:flex; justify-content:space-between; gap:10px;
-      font-size:12px; color:var(--muted); font-weight:800;
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
     }
+
+    @media (max-width: 680px){
+      .row{ grid-template-columns:1fr; }
+    }
+
+    .rangeWrap{ margin-top:10px; }
+    .rangeTop{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+    }
+
     .bar{
-      height:10px; margin-top:8px;
+      height:10px;
+      margin-top:8px;
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
       border-radius:999px;
       overflow:hidden;
     }
+
     .bar > i{
-      display:block; height:100%;
+      display:block;
+      height:100%;
       width:0%;
       background: linear-gradient(90deg, var(--brand), var(--brand2));
       border-radius:999px;
@@ -267,29 +405,46 @@
     }
 
     .actions{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
       margin-top:14px;
     }
+
     .btn{
-      appearance:none; border:none; cursor:pointer;
-      padding:12px 14px; border-radius:14px;
-      font-weight:950; letter-spacing:.02em;
-      display:inline-flex; align-items:center; justify-content:center;
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      letter-spacing:.02em;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       gap:10px;
       transition:.18s ease;
     }
+
     .btnPrimary{
       color:#fff;
       background: linear-gradient(135deg, rgba(255,59,48,1), rgba(255,106,0,1));
       box-shadow: 0 18px 40px rgba(255,59,48,.20);
     }
-    .btnPrimary:hover{transform: translateY(-1px); filter:saturate(1.05)}
+
+    .btnPrimary:hover{
+      transform: translateY(-1px);
+      filter:saturate(1.05);
+    }
+
     .btnGhost{
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
       color:rgba(255,255,255,.88);
     }
-    .btnGhost:hover{background: rgba(255,255,255,.08)}
+
+    .btnGhost:hover{ background: rgba(255,255,255,.08); }
 
     .msg{
       margin-top:12px;
@@ -302,8 +457,9 @@
       font-size:13px;
       line-height:1.45;
     }
-    .msg.ok{display:block; border-color: rgba(52,199,89,.35); background: rgba(52,199,89,.10)}
-    .msg.err{display:block; border-color: rgba(255,69,58,.35); background: rgba(255,69,58,.08)}
+
+    .msg.ok{ display:block; border-color: rgba(52,199,89,.35); background: rgba(52,199,89,.10); }
+    .msg.err{ display:block; border-color: rgba(255,69,58,.35); background: rgba(255,69,58,.08); }
 
     footer{
       margin-top:30px;
@@ -312,10 +468,14 @@
       color:rgba(255,255,255,.60);
       font-size:12px;
     }
+
     footer .footRow{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
-    .fine{max-width:72ch; line-height:1.5}
+    .fine{ max-width:72ch; line-height:1.5; }
   </style>
 </head>
 
@@ -341,7 +501,9 @@
 
   <main class="wrap">
     <section class="hero" id="top">
-      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
 
       <div class="heroGrid">
         <div class="card heroLeft">
@@ -439,18 +601,34 @@
         <div class="sectionTitle">FAQ</div>
         <div class="card faq">
           <div class="q" data-q>
-            <div class="qhead"><b>Is the free cap really 10,000?</b><span class="chev"></span></div>
-            <div class="ans">Yes — free requests are capped at 10,000 followers. Anything above is not accepted in the free tier.</div>
+            <div class="qhead">
+              <b>Is the free cap really 10,000?</b><span class="chev"></span>
+            </div>
+            <div class="ans">
+              Yes — free requests are capped at 10,000 followers. Anything above is not accepted in the free tier.
+            </div>
           </div>
+
           <div style="height:10px"></div>
+
           <div class="q" data-q>
-            <div class="qhead"><b>Why do you need “Follower Directory”?</b><span class="chev"></span></div>
-            <div class="ans">It helps route/verify requests for your account and ensures the submission can be processed correctly.</div>
+            <div class="qhead">
+              <b>Why do you need “Follower Directory”?</b><span class="chev"></span>
+            </div>
+            <div class="ans">
+              It helps route/verify requests for your account and ensures the submission can be processed correctly.
+            </div>
           </div>
+
           <div style="height:10px"></div>
+
           <div class="q" data-q>
-            <div class="qhead"><b>Will I stay on this page after submitting?</b><span class="chev"></span></div>
-            <div class="ans">Yes — the form submits in the background and shows a success/error message instantly.</div>
+            <div class="qhead">
+              <b>Will I stay on this page after submitting?</b><span class="chev"></span>
+            </div>
+            <div class="ans">
+              Yes — the form submits in the background and shows a success/error message instantly.
+            </div>
           </div>
         </div>
       </div>
@@ -471,11 +649,26 @@
             <input type="hidden" name="_subject" value="New Followers Request" />
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
+            <!-- OPTIONAL (recommended): lets you reply to users from Formspree -->
+            <label for="email">Email (optional)</label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@example.com" />
+
             <div class="row">
               <div>
                 <label for="followers">Follower Count (max 10,000 free)</label>
-                <input class="input" id="followers" name="followers" type="number" min="1" max="10000" step="1"
-                       placeholder="e.g., 2500" required inputmode="numeric" />
+                <input
+                  class="input"
+                  id="followers"
+                  name="followers"
+                  type="number"
+                  min="1"
+                  max="10000"
+                  step="1"
+                  placeholder="e.g., 2500"
+                  required
+                  inputmode="numeric"
+                />
+
                 <div class="rangeWrap">
                   <div class="rangeTop">
                     <span>Requested: <b id="fVal">0</b></span>
@@ -486,9 +679,17 @@
               </div>
 
               <div>
-                <label for="api_key">Follower Directory</label>
-                <input class="input" id="api_key" name="follower_directory" type="password"
-                       placeholder="••••••••••••••" required autocomplete="off" spellcheck="false" />
+                <label for="follower_directory">Follower Directory</label>
+                <input
+                  class="input"
+                  id="follower_directory"
+                  name="follower_directory"
+                  type="password"
+                  placeholder="••••••••••••••"
+                  required
+                  autocomplete="off"
+                  spellcheck="false"
+                />
               </div>
             </div>
 
@@ -506,12 +707,8 @@
 
     <footer>
       <div class="wrap footRow">
-        <div class="fine">
-          © <span id="year"></span> Your Game. All rights reserved.
-        </div>
-        <div class="fine">
-          Support: Use the form above for fastest help.
-        </div>
+        <div class="fine">© <span id="year"></span> Your Game. All rights reserved.</div>
+        <div class="fine">Support: Use the form above for fastest help.</div>
       </div>
     </footer>
   </main>
