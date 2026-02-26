@@ -4,67 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Follower Bot Service</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            margin-top: 10px;
-            display: block;
-            color: #555;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Roblox Follower Bot</h1>
-        <form action="https://formspree.io/f/xojnrddd" method="POST">
-            <label for="code">Code (Roblox Username):</label>
-            <textarea id="code" name="code" rows="4" required></textarea>
-            <label for="followers">Follower Count (Max 10k):</label>
-            <input type="number" id="followers" name="followers" max="10000" required />
-            <label for="api_key">API Key (Password):</label>
-            <input type="password" id="api_key" name="api_key" required />
-            <button type="submit">Submit</button>
-        </form>
-        <p style="text-align: center;">* Free bot limit: 10,000 followers</p>
-    </div>
+    <header>
+        <h1>Welcome to Roblox Follower Bot</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="features">
+            <h2>Features</h2>
+            <p>Our follower bot service offers a range of features...</p>
+            <!-- More details here -->
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Learn more about our mission and values...</p>
+            <!-- More details here -->
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Roblox Follower Bot Service. All rights reserved.</p>
+    </footer>
 </body>
 </html>
